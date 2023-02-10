@@ -9,13 +9,28 @@
         function mudaTitulo(event) {
             document.getElementById("titulo").innerHTML = "JavaScript é muito bom!";
         }    
+
+        function writeText() {
+            document.getElementById("text").innerHTML = document.getElementById("texto").value;
+        }
+
+        function changeColor() {
+            document.getElementById("body").style.backgroundColor = document.getElementById("cor").value;
+        }
     </script>
     
 </head>
-<body>
+<body id="body">
     <button onclick="mudaTitulo()">Muda Título</button>
     <br>
     <h1 id="titulo">JavaScript nao presta!</h1>
+
+    <span id="text"></span>
+    <br>
+    <input type="text" id="texto" oninput="writeText()">
+
+    <br>
+    <input type="color" name="" id="cor" oninput="changeColor()">
 </body>
 
 </html>
