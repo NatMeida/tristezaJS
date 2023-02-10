@@ -1,0 +1,27 @@
+let variavel: any = 1;
+
+variavel.click();
+
+function teste(i: number): number {
+  console.log('teste');
+
+  return 1;
+}
+
+function nat(val: number | string): string {
+    if (typeof val === 'number') {
+        return "É um número!";
+    } else {
+        return "É uma string!";
+    }
+}
+
+nat([1, 2, 3]);
+
+if (typeof variavel === 'string') {
+  console.log(variavel);
+} else {
+    variavel
+}
+
+

@@ -17,6 +17,18 @@
         function changeColor() {
             document.getElementById("body").style.backgroundColor = document.getElementById("cor").value;
         }
+
+        function doSomething(value) {
+            const nat = [1, 2, 3];
+            const natConstante = Object.freeze(nat);
+
+            natConstante.push(4);
+
+            return "oi";
+        }
+
+        changeColor().nat();
+        
     </script>
     
 </head>
@@ -31,6 +43,7 @@
 
     <br>
     <input type="color" name="" id="cor" oninput="changeColor()">
+
 </body>
 
 </html>
