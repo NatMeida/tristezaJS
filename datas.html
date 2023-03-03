@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span id = "saudacao"></span>
+</body>
+
+<script>
+    const data = new Date();
+    const hora = data.getHours();
+
+    const mensagem = hora >= 0 && hora < 12 ? "Bom dia" : hora >= 12 && hora < 18 ? "Boa tarde" : "Boa noite";
+    document.getElementById("saudacao").innerHTML = mensagem;
+
+    if (hora >= 0 && hora < 12) {
+        document.getElementById("saudacao").innerHTML = "Bom dia";
+    } else if (hora >= 12 && hora < 18) {
+        document.getElementById("saudacao").innerHTML = "Boa tarde";
+    } else {
+        document.getElementById("saudacao").innerHTML = "Boa noite";
+    }
+
+    function confgByTime() {
+        const data = new Date();
+        const hora = data.getHours();
+
+        if (hora >= 0 && hora < 12) {
+            document.body.style.backgroundColor = "yellow";
+        } else if (hora >= 12 && hora < 18) {
+            document.body.style.backgroundColor = "orange";
+        } else {
+            document.body.style.backgroundColor = "black";
+        }
+    }
+
+</script>
+</html>
