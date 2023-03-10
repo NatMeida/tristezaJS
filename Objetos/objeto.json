@@ -1,0 +1,17 @@
+{
+    "nome": "Cristiano",
+    "idade": 32,
+    "profissao": "Programador",
+    "formacao": [
+        {
+            "curso": "Ciência da Computação",
+            "instituicao": "UNIP",
+            "ano": 2008
+        },
+        {
+            "curso": "Técnico em Informática",
+            "instituicao": "IFSP",
+            "ano": 2005
+        }
+    ]
+}
