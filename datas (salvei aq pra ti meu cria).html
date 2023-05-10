@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span id="saudacao"></span>
+    <span id="clock"></span>
+</body>
+
+<script>
+    function configByTime() {
+        const data = new Date();
+        const hora = data.getHours();
+        
+        if (hora >= 0 && hora < 12) {
+            document.getElementById("saudacao").innerHTML = "Bom dia";
+            document.body.style.backgroundColor = "yellow";
+        } else if (hora >= 12 && hora < 18) {
+            document.getElementById("saudacao").innerHTML = "Boa tarde";
+            document.body.style.backgroundColor = "orange";
+        } else {
+            document.getElementById("saudacao").innerHTML = "Boa noite";
+            document.body.style.backgroundColor = "black";
+        }
+    }
+
+    function showClock() {
+        const data = new Date();
+        const hora = data.getHours();
+        const minuto = data.getMinutes();
+        const segundo = data.getSeconds();
+
+        const horaFormatada = hora < 10 ? `0${hora}` : hora;
+        const minutoFormatado = minuto < 10 ? `0${minuto}` : minuto;
+        const segundoFormatado = segundo < 10 ? `0${segundo}` : segundo;
+
+        document.getElementById("clock").innerHTML = `${horaFormatada}:${minutoFormatado}:${segundoFormatado}`;
+    }
+
+    setInterval(showClock, 3000);
+    setInterval(configByTime, 1000);
+</script>
+</html>

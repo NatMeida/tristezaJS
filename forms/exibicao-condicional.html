@@ -1,0 +1,110 @@
+        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    form {
+        width: clamp(200px, 50%, 200px);
+        display: flex;
+        flex-direction: column;
+    }
+
+    form > div:has(input[type="radio"]) {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    form div:not(:has(input[type="radio"])) label {
+        margin-bottom: 1rem;
+    }
+
+    form div:has(input[type="radio"]):nth-child(2) {
+        margin-bottom: 1rem;
+    }
+</style>
+
+<body onload="configPagina()">
+    <form action="">
+        <div>
+            <label for="tipo">Pessoa física</label>
+            <input type="radio" name="tipo" id="pf" value="pf" checked>
+        </div>
+
+        <div>
+            <label for="tipo">Pessoa jurídica</label>
+            <input type="radio" name="tipo" id="pj" value="pj">
+        </div>
+
+        <div id="info"></div>
+    </form>
+</body>
+
+<script>
+    const pfRadio = document.querySelector("#pf");
+    const pjRadio = document.querySelector("#pj");
+    const nameLbl = document.querySelector('[for="nome"]');
+    const nomeInput = document.querySelector('[name="nome"]');
+    
+    function getTipo() {
+        return pfRadio.checked ? pfRadio.value : pjRadio.value;
+    }
+    
+    function setNomeLabel() {
+        const tipo = getTipo();
+        
+        document.querySelector("#info").replaceWith(tipo === "pf" ? cpfFieldSet() : cnpjFieldSet());
+    }
+
+    document.querySelectorAll('[name="tipo"]').forEach(radio => {
+        radio.addEventListener("change", setNomeLabel);
+    });
+
+    function configPagina() {
+        document.querySelector("#info").replaceWith(cpfFieldSet());
+    }
+
+    function cpfFieldSet() {
+        const cpf = document.createElement("div");
+        cpf.id = "info";
+
+        cpf.innerHTML = `
+            <label for="cpf">CPF</label>
+            <input type="text" name="cpf" id="cpf" maxlength="14">
+
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" maxlength="50">
+        `;
+
+        return cpf;
+    }
+
+    /*
+    pendente
+    cancelada
+    realizada
+    falta
+    */
+
+    function cnpjFieldSet() {
+        const cnpj = document.createElement("div");
+        cnpj.id = "info";
+
+        cnpj.innerHTML = `
+            <label for="cnpj">CNPJ</label>
+            <input type="text" name="cnpj" id="cnpj" size="20" maxlength="18">
+
+            <label for="razaoSocial">Razão social</label>
+            <input type="text" name="razaoSocial" id="razaoSocial" size="52" maxlength="50">
+        `;
+
+        return cnpj;
+    }
+</script>
+
+</html>

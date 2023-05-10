@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        form {
+            width: fit-content;
+            background-color: rosybrown;
+            border-style: solid;
+            border-color: black;
+        }
+
+        div#fundo {
+            width: 100px;
+            height: 100px;
+            border-style: solid;
+            border-color: black;
+            background-color: corPreferida;
+        }
+
+        img {
+            aspect-ratio: 1 / 1;
+            max-width: 200px;
+        }
+
+    </style>
+
+    <script>
+        function exibirValor() {
+            var valor = document.getElementById("capacitacao").value;
+            document.getElementById("valor").innerHTML = valor;
+        }
+
+        function contarCaracteres() {
+            var tamMax = 10;
+            var texto = document.getElementById("nome").value;
+            document.getElementById('numeroCaracteres').textContent = texto.length;
+            document.getElementById('numeroCaracteresRest').textContent = tamMax - texto.length;
+        }
+
+        function exibirCor() {
+            var cor = document.getElementById("corPreferida").value;
+            document.getElementById("corPreferida").style.backgroundColor = cor;
+
+            document.getElementById("texto").innerHTML = "Minha cor preferida é: " + cor;
+            document.getElementById("texto").style.color = cor;
+            document.getElementById("fundo").style.backgroundColor = cor;
+        }
+
+        function somasub(operacao) {
+            var valor = document.getElementById("resultado").textContent;
+            if (operacao == '+') {
+                valor++;
+            } else {
+                valor--;
+            }
+            document.getElementById("resultado").textContent = valor;
+        }
+    </script>
+
+</head>
+<body>
+
+    <form>
+        Capacitação: <br>
+        <input type="range" name="capacitacao" id="capacitacao" min="0" max="10" value="0"
+            oninput="exibirValor()">
+        <span id="valor">0</span>
+
+        <br><br>
+        Nome: <br>
+        <input type="text" name="nome" id="nome" maxlength="10" onkeyup="contarCaracteres()">
+        <span id="numeroCaracteres">0</span> caracteres / 
+        <span id="numeroCaracteresRest">10</span> caracteres restantes
+
+        <br><br>
+        Cor preferida<br>
+        <input type="color" name="corPreferida" id="corPreferida" oninput="exibirCor()">
+
+        <br><br>
+        <span id="texto">Minha cor preferida é: </span>
+        <div id="fundo"></div>
+
+        <br><br>
+        <div id="produto" name="produto">
+            <img src="../img/estrogonofe.jpg" alt="Prato de estrogonofe contendo arroz e batata palha como acompanhamento.">
+
+            <br><br>
+            <input type="button" value="-" onclick="somasub('-')">
+            <span id="resultado">0</span>
+            <input type="button" value="+" onclick="somasub('+')">
+            
+            
+        </div>
+
+    </form>
+
+
+</body>
+</html>
